@@ -7,7 +7,6 @@ gem "rails", "~> 7.0.8"
 
 gem "bootsnap", require: false
 gem "importmap-rails"
-gem "jbuilder"
 gem "puma", "~> 5.0"
 gem "redis", "~> 4.0"
 gem "simple_form"
