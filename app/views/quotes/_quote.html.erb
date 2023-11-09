@@ -4,7 +4,10 @@
     <%= quote.name %>
   </p>
 
-  <%= link_to "Show this quote", quote, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "Edit this quote", edit_quote_path(quote), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+  <div class="flex items-center">
+    <%= link_to "Show this quote", quote, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this quote", edit_quote_path(quote), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= button_to "Delete", quote_path(quote), method: :delete, class: "rounded-lg py-3 ml-2 px-5 bg-red-50 inline-block font-medium" %>
+  </div>
   <hr class="mt-6">
 <% end %>
