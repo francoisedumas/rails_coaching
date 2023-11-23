@@ -1,12 +1,13 @@
-<div id="<%= dom_id quote %>">
+<%= turbo_frame_tag quote do %>
   <p class="my-5">
     <strong class="block font-medium mb-1">Name:</strong>
     <%= quote.name %>
   </p>
 
-  <% if action_name != "show" %>
+  <div class="flex items-center">
     <%= link_to "Show this quote", quote, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "Edit this quote", edit_quote_path(quote), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
-  <% end %>
-</div>
+    <%= button_to "Delete", quote_path(quote), method: :delete, class: "rounded-lg py-3 ml-2 px-5 bg-red-50 inline-block font-medium" %>
+  </div>
+  <hr class="mt-6">
+<% end %>
