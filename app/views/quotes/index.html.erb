@@ -13,6 +13,8 @@
 
   <%= turbo_frame_tag Quote.new %>
 
+  <%= turbo_stream_from "quotes" %>
+  
   <div id="quotes" class="min-w-full">
     <%= render @quotes %>
   </div>
