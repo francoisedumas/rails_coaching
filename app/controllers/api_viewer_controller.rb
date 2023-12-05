@@ -1,11 +1,15 @@
 class ApiViewerController < ApplicationController
   def index
-    # response = ApiViewerService.call(sub_path: "construction-specs")
-    # @pagy, @vessels = pagy_array(response)
-    @pagy, @vessels = pagy_array(local_answer)
+    @pagy, @vessels = pagy_array(cache_answer)
   end
 
   private
+
+  def cache_answer
+    Rails.cache.fetch("api_response", expires_in: 12.hours) do
+      ApiViewerService.call(sub_path: "construction-specs")
+    end
+  end
 
   def local_answer
     path = Rails.root.join("tmp", "api_response.json")
