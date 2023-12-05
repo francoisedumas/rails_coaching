@@ -1,4 +1,131 @@
-<div class="w-full text-center bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
-  <h2 class="text-4xl font-bold tracking-tight text-white sm:text-6xl">API response</h2>
-  <pre class="mt-6 text-lg leading-8 text-gray-300"><%= @api_response %></pre>
+<div class="bg-white">
+  <div class="mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="flex flex-col space-y-32">
+      <% @vessels.each do |vessel| %>
+
+        <!-- Product -->
+        <div class="lg:grid lg:grid-cols-7 lg:grid-rows-1 lg:gap-x-8 lg:gap-y-10 xl:gap-x-16">
+          <!-- Product image -->
+          <div class="lg:col-span-4 lg:row-end-1">
+            <div class="aspect-h-3 aspect-w-4 overflow-hidden rounded-lg bg-gray-100">
+              <% if vessel["vesselImageURI"]  %>
+                <%= image_tag(vessel["vesselImageURI"], alt:"App screenshot", width:"2432", height:"1442", class:"w-[76rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10")%>
+              <% else %>
+                <%= image_tag("https://images.pexels.com/photos/37859/sailing-ship-vessel-boat-sea-37859.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1", alt:"App screenshot", width:"2432", height:"1442", class:"w-[76rem] rounded-md bg-white/5 shadow-2xl ring-1 ring-white/10")%>
+              <% end %>
+            </div>
+          </div>
+
+          <!-- Product details -->
+          <div class="mx-auto mt-14 max-w-2xl sm:mt-16 lg:col-span-3 lg:row-span-2 lg:row-end-2 lg:mt-0 lg:max-w-none">
+            <div class="flex flex-col-reverse">
+              <div class="mt-4">
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl"><%= vessel["vessel"] %></h1>
+
+                <h2 id="information-heading" class="sr-only">Vessel information</h2>
+                <p class="mt-2 text-sm text-gray-500"><%= "Vessel manager #{vessel["vesselManager"]}" %></p>
+              </div>
+
+              <div>
+                <h3 class="sr-only">Reviews</h3>
+                <div class="flex items-center">
+                  <!-- Active: "text-yellow-400", Default: "text-gray-300" -->
+                  <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                  <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                  <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                  <svg class="text-yellow-400 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                  <svg class="text-gray-300 h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <p class="sr-only">4 out of 5 stars</p>
+              </div>
+            </div>
+
+            <p class="mt-6 text-gray-500"><%= vessel["classNotation"] %></p>
+
+            <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+              <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Book it</button>
+              <button type="button" class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">Contact</button>
+            </div>
+
+            <div class="mt-10 border-t border-gray-200 pt-10">
+              <h3 class="text-sm font-medium text-gray-900">Highlights</h3>
+              <div class="prose prose-sm mt-4 text-gray-500">
+                <ul role="list">
+                  <li><%= "Design: #{vessel["design"]}" %></li>
+                  <li><%= "Owner: #{vessel["owner"]}" %></li>
+                  <li><%= "Owner country: #{vessel["ownerCountry"]}" %></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-10 border-t border-gray-200 pt-10">
+              <h3 class="text-sm font-medium text-gray-900">Key elements</h3>
+              <div class="prose prose-sm mt-4 text-gray-500">
+                <ul role="list">
+                  <li><%= "Gross tonnage: #{vessel["grossTonnage"]}" %></li>
+                  <li><%= "Dead weight tonnage: #{vessel["deadWeightTonnage"]}" %></li>
+                  <li><%= "Deck area: #{vessel["deckArea"]}" %></li>
+                  <li><%= "Deck cargo capacity: #{vessel["deckCargoCapacity"]}" %></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-10 border-t border-gray-200 pt-10">
+              <h3 class="text-sm font-medium text-gray-900">Current country</h3>
+              <ul role="list" class="mt-4 flex items-center space-x-6">
+                <li>
+                  <% if vessel["currentCountryId"].presence %>
+                    <span data-controller="flag" data-flag-country-value="<%= vessel["currentCountryId"] %>"  data-flag-target="flag" class="flag mr-2"></span>
+                  <% end %>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
+            <div>
+              <div class="border-b border-gray-200">
+                <div class="-mb-px flex space-x-8" aria-orientation="horizontal" role="tablist">
+                  <!-- Selected: "border-indigo-600 text-indigo-600", Not Selected: "border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800" -->
+                  <button id="tab-reviews" class="border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-reviews" role="tab" type="button">FAQ</button>
+                  <button id="tab-faq" class="border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-faq" role="tab" type="button">Key indicators</button>
+                  <button id="tab-license" class="border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800 whitespace-nowrap border-b-2 py-6 text-sm font-medium" aria-controls="tab-panel-license" role="tab" type="button">License</button>
+                </div>
+              </div>
+
+              <!-- 'FAQ' panel, show/hide based on tab state -->
+              <div id="tab-panel-faq" class="text-sm text-gray-500" aria-labelledby="tab-faq" role="tabpanel" tabindex="0">
+                <h3 class="sr-only">Frequently Asked Questions</h3>
+
+                <dl>
+                  <dt class="mt-10 font-medium text-gray-900">Environmental score comment</dt>
+                  <dd class="prose prose-sm mt-2 max-w-none text-gray-500">
+                    <p><%= vessel["environmentalScoreComment"] %></p>
+                  </dd>
+                  <dt class="mt-10 font-medium text-gray-900">Charter info</dt>
+                  <dd class="prose prose-sm mt-2 max-w-none text-gray-500">
+                    <p><%= vessel["charterInfo"].presence || "Not available" %></p>
+                  </dd>
+                </dl>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      <% end %>
+      <div class="fixed inset-x-0 bottom-0 gap-x-8 gap-y-4 bg-white px-6 pt-4 ring-1 ring-gray-900/10 md:flex-row md:items-center">
+        <%= render "pagination" %>
+      </div>
+    </div>
+  </div>
 </div>

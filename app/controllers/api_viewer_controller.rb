@@ -1,8 +1,8 @@
 class ApiViewerController < ApplicationController
   def show
-    response = ApiViewerService.call(sub_path: "construction-specs")
-    @vessels = response
-    # @pagy, @vessels = pagy_array(local_answer)
+    # response = ApiViewerService.call(sub_path: "construction-specs")
+    # @vessels = response
+    @pagy, @vessels = pagy_array(local_answer)
   end
 
   private
