@@ -1,6 +1,8 @@
 class ApiViewerController < ApplicationController
   def index
-    @pagy, @vessels = pagy_array(cache_answer)
+    country = params[:country]
+    filtered_data = cache_answer.select { |entry| entry['currentCountryId'] == country } if country
+    @pagy, @vessels = pagy_array(filtered_data || cache_answer)
   end
 
   private
