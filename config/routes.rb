@@ -4,4 +4,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "quotes#index"
+
+  resource :api_viewer, controller: "api_viewer", only: [:show]
 end
