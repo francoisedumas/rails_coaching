@@ -2,7 +2,14 @@
   <div class="fixed z-10 inset-x-0 top-0 gap-x-8 gap-y-4 bg-white px-6 pt-4 ring-1 ring-gray-900/10 md:flex-row md:items-center">
     <%= form_with url: api_viewer_index_path, method: :get do |form| %>
       <%= form.label :country, 'Country' %>
-      <%= form.select(:country, options_for_select(@country_filter, params[:country]), {include_blank: true}) %>
+      <%= form.select(:country,
+        options_for_select(@country_filter, params[:country]),
+        {include_blank: true})
+      %>
+      <%= form.select(:status,
+        options_for_select(@status_filter, params[:status]),
+        {include_blank: true})
+      %>
       <%= form.submit 'Filter', class:"rounded-md border border-transparent bg-indigo-50 px-8 py-3 text-base font-medium text-indigo-700 hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"  %>
     <% end %>
   </div>
