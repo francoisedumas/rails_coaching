@@ -17,6 +17,7 @@ class ApiViewerController < ApplicationController
   def apply_filters
     @filtered_data = @filtered_data.select { |entry| entry['currentCountry'] == params[:country] } if params[:country].present?
     @filtered_data = @filtered_data.select { |entry| entry['vesselStatus'] == params[:status] } if params[:status].present?
+    @filtered_data = @filtered_data.select { |entry| entry['vessel']&.downcase&.include?(params[:name].downcase) } if params[:name].present?
   end
 
   def cache_answer
