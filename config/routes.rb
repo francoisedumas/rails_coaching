@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   root "quotes#index"
 
   resources :api_viewer, controller: "api_viewer", only: [:index]
+  resource :pdf, only: [:show] do
+    member do
+      get :download
+    end
+  end
 end
