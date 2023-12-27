@@ -5,6 +5,18 @@ class Pdf
 
   attr_reader :document
 
+  OWN_ADDRESS = <<-TXT.freeze
+    12 rue du Cactus
+    75000 Paris
+    FRANCE
+  TXT
+
+  OTHER_ADDRESS = <<-TXT.freeze
+    Avenue du petit Lu
+    44000 Nantes
+    BRETAGNE
+  TXT
+
   def initialize
     @document = Prawn::Document.new(PDF_CONFIG.merge(info: metadata))
     document.line_width = LINE_WIDTH
@@ -15,6 +27,8 @@ class Pdf
 
   def build
     header
+    half_width_table(title: "Owner place", content: OWN_ADDRESS)
+    half_width_table(title: "Customer place", content: OTHER_ADDRESS, position: :right, move_down: false)
 
     document.render
   end
