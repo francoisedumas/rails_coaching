@@ -27,7 +27,6 @@ end
 group :development do
   gem "faker"
   gem "web-console"
-  gem "byebug", platforms: %i[ mri mingw x64_mingw ]
 end
 
 group :test do
