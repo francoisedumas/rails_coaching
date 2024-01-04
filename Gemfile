@@ -19,6 +19,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 gem "httparty", "~> 0.21.0"
 gem "pagy", "~> 6.0"
 
+gem "prawn", "~> 2.4" # for generating pdfs
+gem "prawn-table", "~> 0.2.2" 
+gem "prawn-icon", "~> 3.1"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
